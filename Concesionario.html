@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AUTOELITE | Concesionario Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="script.js"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              dark: {
+                bg: "#0f0f0f",
+                surface: "#1a1a1a",
+                border: "#2a2a2a",
+              },
+              brand: {
+                50: "#f0f9ff",
+                100: "#e0f2fe",
+                500: "#0ea5e9",
+                600: "#0284c7",
+                900: "#0c4a6e",
+              },
+              mechanic: {
+                500: "#f59e0b",
+                600: "#d97706",
+              },
+              commercial: {
+                500: "#10b981",
+                600: "#059669",
+              },
+              admin: {
+                500: "#8b5cf6",
+                600: "#7c3aed",
+              }
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-gray-50 text-gray-900 antialiased transition-colors duration-300"
+  >
+    <!-- Navigation -->
+
+    <nav
+      id="navbar"
+      class="fixed w-full z-50 transition-all duration-300 bg-transparent"
+    >
+     <!-- Navigation -->
+<nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      
+      <!-- NUEVO LOGO ELEGANTE -->
+      <div class="flex items-center cursor-pointer group" onclick="showSection('home')">
+        <!-- Logo SVG -->
+        <div class="relative mr-4">
+          <svg width="50" height="50" viewBox="0 0 50 50" class="transform group-hover:scale-105 transition-transform duration-300">
+            <defs>
+              <linearGradient id="logoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#d4af37"/>
+                <stop offset="50%" style="stop-color:#f4d03f"/>
+                <stop offset="100%" style="stop-color:#b8860b"/>
+              </linearGradient>
+              <linearGradient id="logoDark" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#1a1a1a"/>
+                <stop offset="100%" style="stop-color:#000000"/>
+              </linearGradient>
+            </defs>
+            <!-- Círculo exterior -->
+            <circle cx="25" cy="25" r="23" fill="none" stroke="url(#logoGold)" stroke-width="2"/>
+            <!-- Silueta del coche -->
+            <path d="M8 28 Q8 22 14 20 L18 18 Q22 15 30 15 L35 15 Q40 15 43 18 L46 20 Q48 22 48 28 L48 32 Q48 36 44 36 L12 36 Q8 36 8 32 Z" 
+                  fill="url(#logoDark)" stroke="url(#logoGold)" stroke-width="1.5"/>
+            <!-- Ruedas -->
+            <circle cx="18" cy="36" r="5" fill="#1a1a1a" stroke="url(#logoGold)" stroke-width="1.5"/>
+            <circle cx="38" cy="36" r="5" fill="#1a1a1a" stroke="url(#logoGold)" stroke-width="1.5"/>
+            <!-- Detalle de lujo -->
+            <path d="M12 24 L20 20 L35 20" fill="none" stroke="url(#logoGold)" stroke-width="1" opacity="0.6"/>
+            <circle cx="42" cy="22" r="1.5" fill="url(#logoGold)"/>
+          </svg>
+          <!-- Brillo decorativo -->
+          <div class="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full opacity-60 blur-sm animate-pulse"></div>
+        </div>
+        
+        <!-- Texto del logo -->
+        <div class="flex flex-col">
+          <div class="flex items-baseline">
+            <span class="serif text-2xl font-bold tracking-tight text-gray-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-300">AUTO</span>
+            <span class="serif text-2xl font-bold tracking-tight text-amber-600 dark:text-amber-400 ml-1 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300">ELITE</span>
+          </div>
+          <span class="text-[10px] uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400 font-medium mt-0.5">Premium Motors</span>
+        </div>
+      </div>
+
+      <!-- Resto de la navegación... -->
+      <div class="hidden md:flex space-x-8 items-center" id="nav-links">
+        <!-- Links dinámicos según rol -->
+      </div>
+      
+      <!-- ... resto del navbar -->
+    </div>
+  </div>
+</nav>
+
+          <div class="hidden md:flex space-x-8 items-center" id="nav-links">
+            <!-- Links dinámicos según rol -->
+          </div>
+
+          <div class="flex items-center gap-4 md:hidden">
+            <button onclick="toggleTheme()" class="p-2">
+              <i data-lucide="moon" class="h-5 w-5 dark:text-white"></i>
+            </button>
+            <button onclick="toggleMobileMenu()">
+              <i data-lucide="menu" class="h-6 w-6 dark:text-white"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden glass dark:bg-dark-surface dark:border-dark-border border-t border-gray-200"
+      >
+        <div class="px-4 pt-2 pb-6 space-y-2" id="mobile-nav-links">
+          <!-- Links móviles dinámicos -->
+        </div>
+      </div>
+    </nav>
+
+    <!-- Auth Modal (Login/Register) -->
+    <div id="auth-modal" class="fixed inset-0 z-50 hidden">
+      <div
+        class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        onclick="closeAuthModal()"
+      ></div>
+      <div class="relative min-h-screen flex items-center justify-center p-4">
+        <div
+          class="bg-white dark:bg-dark-surface rounded-2xl shadow-2xl w-full max-w-md p-8 transform transition-all dark:text-white"
+        >
+          <!-- Login Form -->
+          <div id="login-form" class="hidden">
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="serif text-3xl font-bold">Bienvenido de vuelta</h2>
+              <button
+                onclick="closeAuthModal()"
+                class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
+              >
+                <i data-lucide="x" class="h-6 w-6"></i>
+              </button>
+            </div>
+            <form onsubmit="handleLogin(event)">
+              <div class="space-y-4">
+                <div>
+                  <label
+                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="login-email"
+                    required
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-black outline-none transition-all"
+                    placeholder="tu@email.com"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    >Contraseña</label
+                  >
+                  <input
+                    type="password"
+                    id="login-password"
+                    required
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-black outline-none transition-all"
+                    placeholder="••••••••"
+                  />
+                </div>
+                
+                <!-- Selector de Rol -->
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Iniciar como:</label>
+                  <div class="grid grid-cols-2 gap-2">
+                    <label class="cursor-pointer">
+                      <input type="radio" name="login-role" value="cliente" checked class="sr-only peer">
+                      <div class="p-3 rounded-lg border-2 border-gray-200 dark:border-dark-border text-center peer-checked:border-blue-500 peer-checked:bg-blue-50 dark:peer-checked:bg-blue-900/20 transition-all">
+                        <i data-lucide="user" class="h-5 w-5 mx-auto mb-1"></i>
+                        <span class="text-sm font-medium">Cliente</span>
+                      </div>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="login-role" value="mecanico" class="sr-only peer">
+                      <div class="p-3 rounded-lg border-2 border-gray-200 dark:border-dark-border text-center peer-checked:border-amber-500 peer-checked:bg-amber-50 dark:peer-checked:bg-amber-900/20 transition-all">
+                        <i data-lucide="wrench" class="h-5 w-5 mx-auto mb-1"></i>
+                        <span class="text-sm font-medium">Mecánico</span>
+                      </div>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="login-role" value="comercial" class="sr-only peer">
+                      <div class="p-3 rounded-lg border-2 border-gray-200 dark:border-dark-border text-center peer-checked:border-emerald-500 peer-checked:bg-emerald-50 dark:peer-checked:bg-emerald-900/20 transition-all">
+                        <i data-lucide="briefcase" class="h-5 w-5 mx-auto mb-1"></i>
+                        <span class="text-sm font-medium">Comercial</span>
+                      </div>
+                    </label>
+                    <label class="cursor-pointer">
+                      <input type="radio" name="login-role" value="admin" class="sr-only peer">
+                      <div class="p-3 rounded-lg border-2 border-gray-200 dark:border-dark-border text-center peer-checked:border-purple-500 peer-checked:bg-purple-50 dark:peer-checked:bg-purple-900/20 transition-all">
+                        <i data-lucide="shield" class="h-5 w-5 mx-auto mb-1"></i>
+                        <span class="text-sm font-medium">Admin</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full bg-black dark:bg-white text-white dark:text-black py-3 rounded-lg font-medium hover:bg-gray-800 dark:hover:bg-gray-200 transition-all transform hover:scale-[1.02]"
+                >
+                  Iniciar Sesión
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Register Form -->
+          <div id="register-form" class="hidden">
+            <div class="flex justify-between items-center mb-6">
+              <div>
+                <h2 class="serif text-3xl font-bold">Crear cuenta</h2>
+                <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">
+                  Únete a AUTOELITE Premium
+                </p>
+              </div>
+              <button
+                onclick="closeAuthModal()"
+                class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
+              >
+                <i data-lucide="x" class="h-6 w-6"></i>
+              </button>
+            </div>
+            <form onsubmit="handleRegister(event)">
+              <div class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nombre</label>
+                    <input type="text" id="reg-name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-black outline-none transition-all" placeholder="Juan" />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Apellidos</label>
+                    <input type="text" id="reg-surname" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-black outline-none transition-all" placeholder="García" />
+                  </div>
+                </div>
+                
+                <!-- Selector de Rol en Registro -->
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Tipo de cuenta:</label>
+                  <select id="reg-role" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-black outline-none bg-white dark:bg-dark-bg">
+                    <option value="cliente">Cliente</option>
+                    <option value="mecanico">Mecánico</option>
+                    <option value="comercial">Comercial</option>
+                    <option value="admin">Administrador</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                  <input type="email" id="reg-email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-black outline-none transition-all" placeholder="tu@email.com" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Contraseña</label>
+                  <input type="password" id="reg-password" required minlength="6" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-black outline-none transition-all" placeholder="Mínimo 6 caracteres" />
+                </div>
+                <button type="submit" class="w-full bg-black dark:bg-white text-white dark:text-black py-3 rounded-lg font-medium hover:bg-gray-800 dark:hover:bg-gray-200 transition-all transform hover:scale-[1.02]">
+                  Crear cuenta
+                </button>
+              </div>
+            </form>
+            <p class="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
+              ¿Ya tienes cuenta?
+              <button onclick="switchAuthMode('login')" class="text-black dark:text-white font-semibold hover:underline ml-1">
+                Inicia sesión
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+      
+      <!-- ==================== VISTA CLIENTE ==================== -->
+      
+      <!-- HOME / LANDING PAGE -->
+      <section id="home" class="section-active">
+        <div class="relative h-screen flex items-center justify-center overflow-hidden">
+          <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1920&q=80" alt="Luxury Car" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60"></div>
+          </div>
+
+          <div class="relative z-10 text-center text-white px-4 max-w-5xl mx-auto slide-up">
+            <p class="text-sm md:text-base tracking-[0.3em] uppercase mb-4 opacity-90">Concesionario Premium</p>
+            <h1 class="serif text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+              Encuentra tu<br />próximo destino
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light">
+              Descubre una colección curada de los vehículos más exclusivos.
+              Diseño, rendimiento y lujo en un solo lugar.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <button onclick="showSection('catalogo')" class="px-8 py-4 bg-white text-black rounded-full font-medium hover:bg-gray-100 transition-all transform hover:scale-105 flex items-center justify-center gap-2">
+                Comprar coche <i data-lucide="arrow-right" class="h-5 w-5"></i>
+              </button>
+              <button onclick="showSection('alquiler')" class="px-8 py-4 bg-black/30 backdrop-blur-sm border-2 border-white text-white rounded-full font-medium hover:bg-white/20 transition-all flex items-center justify-center gap-2">
+                Alquilar coche <i data-lucide="calendar" class="h-5 w-5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Features -->
+        <div class="py-24 bg-white dark:bg-dark-bg transition-colors">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-up">
+              <h2 class="serif text-4xl md:text-5xl font-bold mb-4 dark:text-white">Experiencia Premium</h2>
+              <p class="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+                Cada detalle está diseñado para ofrecerte la mejor experiencia
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+              <div class="text-center group slide-up stagger-1">
+                <div class="w-16 h-16 bg-gray-100 dark:bg-dark-surface rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all duration-300">
+                  <i data-lucide="search" class="h-8 w-8"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3 dark:text-white">Compra Inteligente</h3>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Encuentra el vehículo perfecto con nuestros filtros avanzados.</p>
+              </div>
+
+              <div class="text-center group slide-up stagger-2">
+                <div class="w-16 h-16 bg-gray-100 dark:bg-dark-surface rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all duration-300">
+                  <i data-lucide="calendar" class="h-8 w-8"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3 dark:text-white">Alquiler Flexible</h3>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Alquila vehículos premium por días o semanas.</p>
+              </div>
+
+              <div class="text-center group slide-up stagger-3">
+                <div class="w-16 h-16 bg-gray-100 dark:bg-dark-surface rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all duration-300">
+                  <i data-lucide="wrench" class="h-8 w-8"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3 dark:text-white">Taller Premium</h3>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Servicio de reparación y mantenimiento especializado.</p>
+              </div>
+
+              <div class="text-center group slide-up stagger-4">
+                <div class="w-16 h-16 bg-gray-100 dark:bg-dark-surface rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all duration-300">
+                  <i data-lucide="shield-check" class="h-8 w-8"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3 dark:text-white">Garantía Total</h3>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Todos los vehículos incluyen garantía extendida.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Cars -->
+        <div class="py-24 bg-gray-50 dark:bg-dark-surface transition-colors">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12">
+              <div>
+                <h2 class="serif text-4xl font-bold mb-2 dark:text-white">Destacados</h2>
+                <p class="text-gray-600 dark:text-gray-400">Vehículos seleccionados para ti</p>
+              </div>
+              <button onclick="showSection('catalogo')" class="hidden md:flex items-center gap-2 text-black dark:text-white font-medium hover:gap-3 transition-all">
+                Ver todo <i data-lucide="arrow-right" class="h-5 w-5"></i>
+              </button>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8" id="featured-cars"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATALOG SECTION -->
+      <section id="catalogo" class="hidden pt-24 min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+          <div class="mb-8">
+            <h1 class="serif text-4xl md:text-5xl font-bold mb-4 dark:text-white">Comprar coche</h1>
+            <p class="text-gray-600 dark:text-gray-400">Explora nuestra colección de vehículos premium verificados</p>
+          </div>
+
+          <!-- Filters -->
+          <div class="bg-white dark:bg-dark-surface rounded-2xl shadow-sm p-6 mb-8 sticky top-24 z-30 glass dark:glass-dark">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <select id="filter-brand" onchange="applyFilters()" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-black outline-none bg-white dark:bg-dark-bg">
+                <option value="">Todas las marcas</option>
+                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                <option value="BMW">BMW</option>
+                <option value="Audi">Audi</option>
+                <option value="Porsche">Porsche</option>
+                <option value="Tesla">Tesla</option>
+              </select>
+
+              <select id="filter-type" onchange="applyFilters()" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-black outline-none bg-white dark:bg-dark-bg">
+                <option value="">Todos los tipos</option>
+                <option value="Sedán">Sedán</option>
+                <option value="SUV">SUV</option>
+                <option value="Deportivo">Deportivo</option>
+                <option value="Eléctrico">Eléctrico</option>
+              </select>
+
+              <select id="filter-price" onchange="applyFilters()" class="px-4 py-2 rounded-lg border border-gray-200 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-black outline-none bg-white dark:bg-dark-bg">
+                <option value="">Precio</option>
+                <option value="0-50000">Hasta 50.000€</option>
+                <option value="50000-100000">50.000€ - 100.000€</option>
+                <option value="100000+">Más de 100.000€</option>
+              </select>
+
+              <button onclick="resetFilters()" class="px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors flex items-center justify-center gap-2">
+                <i data-lucide="refresh-cw" class="h-4 w-4"></i> Resetear
+              </button>
+            </div>
+          </div>
+
+          <!-- Cars Grid -->
+          <div id="cars-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+          <div id="no-results" class="hidden text-center py-24">
+            <i data-lucide="search-x" class="h-16 w-16 text-gray-300 mx-auto mb-4"></i>
+            <p class="text-gray-500 dark:text-gray-400 text-lg">No se encontraron vehículos con estos filtros</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- RENTAL SECTION -->
+      <section id="alquiler" class="hidden pt-24 min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+          <div class="mb-8">
+            <h1 class="serif text-4xl md:text-5xl font-bold mb-4 dark:text-white">Alquiler de coches</h1>
+            <p class="text-gray-600 dark:text-gray-400">Vehículos premium disponibles para alquiler</p>
+          </div>
+          <div id="rental-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </div>
+      </section>
+
+      <!-- REPAIR SECTION (CLIENTE) -->
+      <section id="reparaciones" class="hidden pt-24 min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+          <div class="mb-8">
+            <h1 class="serif text-4xl md:text-5xl font-bold mb-4 dark:text-white">Taller de Reparaciones</h1>
+            <p class="text-gray-600 dark:text-gray-400">Solicita presupuesto para la reparación de tu vehículo</p>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-12">
+            <!-- Formulario de solicitud -->
+            <div class="bg-white dark:bg-dark-surface rounded-2xl shadow-lg p-8">
+              <h2 class="serif text-2xl font-bold mb-6 dark:text-white flex items-center gap-2">
+                <i data-lucide="clipboard-list" class="h-6 w-6 text-blue-500"></i>
+                Nueva Solicitud
+              </h2>
+              <form onsubmit="handleRepairRequest(event)" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Marca *</label>
+                    <input type="text" id="repair-brand" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Ej: BMW" />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Modelo *</label>
+                    <input type="text" id="repair-model" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Ej: Serie 3" />
+                  </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Año</label>
+                    <input type="number" id="repair-year" min="1990" max="2026" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-blue-500 outline-none" placeholder="2020" />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Matrícula *</label>
+                    <input type="text" id="repair-plate" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-blue-500 outline-none uppercase" placeholder="1234 ABC" />
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Tipo de reparación *</label>
+                  <select id="repair-type" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-blue-500 outline-none bg-white dark:bg-dark-bg">
+                    <option value="">Selecciona el tipo</option>
+                    <option value="Mecánica general">Mecánica general</option>
+                    <option value="Chapa y pintura">Chapa y pintura</option>
+                    <option value="Electricidad">Electricidad</option>
+                    <option value="Aire acondicionado">Aire acondicionado</option>
+                    <option value="Neumáticos">Neumáticos</option>
+                    <option value="ITV/Pre-ITV">ITV/Pre-ITV</option>
+                    <option value="Otro">Otro</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Descripción del problema *</label>
+                  <textarea id="repair-desc" required rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-blue-500 outline-none resize-none" placeholder="Describe el problema de tu vehículo con el mayor detalle posible..."></textarea>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Fotos (opcional)</label>
+                  <div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl p-6 text-center hover:border-blue-500 transition-colors cursor-pointer bg-gray-50 dark:bg-dark-bg" onclick="document.getElementById('repair-photos').click()">
+                    <input type="file" id="repair-photos" multiple accept="image/*" class="hidden" onchange="handleRepairPhotos(this.files)" />
+                    <i data-lucide="camera" class="h-8 w-8 text-gray-400 mx-auto mb-2"></i>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Haz clic para subir fotos del daño</p>
+                  </div>
+                  <div id="repair-photo-preview" class="grid grid-cols-4 gap-2 mt-4"></div>
+                </div>
+
+                <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2">
+                  <i data-lucide="send" class="h-5 w-5"></i>
+                  Enviar solicitud
+                </button>
+              </form>
+            </div>
+
+            <!-- Mis solicitudes -->
+            <div>
+              <h2 class="serif text-2xl font-bold mb-6 dark:text-white flex items-center gap-2">
+                <i data-lucide="history" class="h-6 w-6 text-blue-500"></i>
+                Mis Solicitudes
+              </h2>
+              <div id="my-repairs-list" class="space-y-4">
+                <!-- Se llena dinámicamente -->
+              </div>
+              <div id="no-repairs" class="text-center py-12 bg-white dark:bg-dark-surface rounded-2xl">
+                <i data-lucide="inbox" class="h-16 w-16 text-gray-300 mx-auto mb-4"></i>
+                <p class="text-gray-500 dark:text-gray-400">No tienes solicitudes pendientes</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VISTA MECÁNICO ==================== -->
+      
+      <!-- DASHBOARD MECÁNICO -->
+      <section id="mecanico-dashboard" class="hidden pt-24 min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+          <div class="mb-8 flex justify-between items-center">
+            <div>
+              <h1 class="serif text-4xl md:text-5xl font-bold mb-2 dark:text-white">Panel de Mecánico</h1>
+              <p class="text-gray-600 dark:text-gray-400">Gestiona las reparaciones asignadas</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="dashboard-card text-center">
+                <p class="text-3xl font-bold text-amber-600" id="mechanic-pending-count">0</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Pendientes</p>
+              </div>
+              <div class="dashboard-card text-center">
+                <p class="text-3xl font-bold text-blue-600" id="mechanic-progress-count">0</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">En progreso</p>
+              </div>
+              <div class="dashboard-card text-center">
+                <p class="text-3xl font-bold text-green-600" id="mechanic-completed-count">0</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Completadas</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filtros -->
+          <div class="bg-white dark:bg-dark-surface rounded-2xl shadow-sm p-4 mb-8 flex gap-4 overflow-x-auto">
+            <button onclick="filterRepairs('all')" class="px-4 py-2 rounded-lg bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200 font-medium whitespace-nowrap">Todas</button>
+            <button onclick="filterRepairs('pending')" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 whitespace-nowrap">Pendientes</button>
+            <button onclick="filterRepairs('in-progress')" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 whitespace-nowrap">En progreso</button>
+            <button onclick="filterRepairs('completed')" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 whitespace-nowrap">Completadas</button>
+          </div>
+
+          <!-- Lista de reparaciones -->
+          <div id="mechanic-repairs-list" class="space-y-4">
+            <!-- Se llena dinámicamente -->
+          </div>
+          
+          <div id="mechanic-no-repairs" class="hidden text-center py-24">
+            <i data-lucide="wrench" class="h-16 w-16 text-gray-300 mx-auto mb-4"></i>
+            <p class="text-gray-500 dark:text-gray-400 text-lg">No hay reparaciones en esta categoría</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VISTA COMERCIAL ==================== -->
+      
+      <!-- DASHBOARD COMERCIAL -->
+      <section id="comercial-dashboard" class="hidden pt-24 min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+          <div class="mb-8 flex justify-between items-center">
+            <div>
+              <h1 class="serif text-4xl md:text-5xl font-bold mb-2 dark:text-white">Panel Comercial</h1>
+              <p class="text-gray-600 dark:text-gray-400">Gestiona tus ventas y publicaciones</p>
+            </div>
+            <button onclick="showSection('vender')" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-medium transition-all flex items-center gap-2">
+              <i data-lucide="plus" class="h-5 w-5"></i>
+              Nuevo vehículo
+            </button>
+          </div>
+
+          <!-- Stats -->
+          <div class="grid md:grid-cols-4 gap-6 mb-8">
+            <div class="dashboard-card">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-gray-500 dark:text-gray-400 text-sm">Ventas este mes</h3>
+                <i data-lucide="trending-up" class="h-5 w-5 text-emerald-500"></i>
+              </div>
+              <p class="text-3xl font-bold dark:text-white">€<span id="commercial-sales">0</span></p>
+            </div>
+            <div class="dashboard-card">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-gray-500 dark:text-gray-400 text-sm">Vehículos activos</h3>
+                <i data-lucide="car" class="h-5 w-5 text-blue-500"></i>
+              </div>
+              <p class="text-3xl font-bold dark:text-white" id="commercial-active">0</p>
+            </div>
+            <div class="dashboard-card">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-gray-500 dark:text-gray-400 text-sm">Ofertas recibidas</h3>
+                <i data-lucide="tag" class="h-5 w-5 text-amber-500"></i>
+              </div>
+              <p class="text-3xl font-bold dark:text-white" id="commercial-offers">0</p>
+            </div>
+            <div class="dashboard-card">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-gray-500 dark:text-gray-400 text-sm">Comisión estimada</h3>
+                <i data-lucide="euro" class="h-5 w-5 text-purple-500"></i>
+              </div>
+              <p class="text-3xl font-bold dark:text-white">€<span id="commercial-commission">0</span></p>
+            </div>
+          </div>
+
+          <!-- Mis publicaciones -->
+          <h2 class="serif text-2xl font-bold mb-6 dark:text-white">Mis Publicaciones</h2>
+          <div id="commercial-listings" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Se llena dinámicamente -->
+          </div>
+          
+          <div id="commercial-no-listings" class="hidden text-center py-24">
+            <i data-lucide="car" class="h-16 w-16 text-gray-300 mx-auto mb-4"></i>
+            <p class="text-gray-500 dark:text-gray-400 text-lg mb-4">No tienes vehículos en venta</p>
+            <button onclick="showSection('vender')" class="px-6 py-3 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition-colors">
+              Publicar primer vehículo
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- VENDER (usado por comercial) -->
+      <section id="vender" class="hidden pt-24 min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+          <div class="text-center mb-12">
+            <h1 class="serif text-4xl md:text-5xl font-bold mb-4 dark:text-white">Poner coche en venta</h1>
+            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Completa los datos del vehículo para publicarlo en el catálogo.
+            </p>
+          </div>
+
+          <div class="bg-white dark:bg-dark-surface rounded-2xl shadow-lg p-8 md:p-12 dark:text-white">
+            <form onsubmit="handleCommercialSell(event)" class="space-y-8">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Marca *</label>
+                  <select id="commercial-brand" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-emerald-500 outline-none bg-white dark:bg-dark-bg">
+                    <option value="">Selecciona marca</option>
+                    <option value="Mercedes-Benz">Mercedes-Benz</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Audi">Audi</option>
+                    <option value="Porsche">Porsche</option>
+                    <option value="Tesla">Tesla</option>
+                    <option value="Volkswagen">Volkswagen</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Ford">Ford</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Modelo *</label>
+                  <input type="text" id="commercial-model" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-emerald-500 outline-none" placeholder="Ej: Golf GTI" />
+                </div>
+              </div>
+
+              <div class="grid md:grid-cols-3 gap-6">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Año *</label>
+                  <input type="number" id="commercial-year" required min="1990" max="2026" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-emerald-500 outline-none" placeholder="2020" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Kilometraje (km) *</label>
+                  <input type="number" id="commercial-km" required min="0" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-emerald-500 outline-none" placeholder="45000" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Precio (€) *</label>
+                  <input type="number" id="commercial-price" required min="0" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-emerald-500 outline-none" placeholder="25000" />
+                </div>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Tipo</label>
+                  <select id="commercial-type" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-emerald-500 outline-none bg-white dark:bg-dark-bg">
+                    <option value="Sedán">Sedán</option>
+                    <option value="SUV">SUV</option>
+                    <option value="Deportivo">Deportivo</option>
+                    <option value="Eléctrico">Eléctrico</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Combustible</label>
+                  <select id="commercial-fuel" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-emerald-500 outline-none bg-white dark:bg-dark-bg">
+                    <option value="Gasolina">Gasolina</option>
+                    <option value="Diésel">Diésel</option>
+                    <option value="Eléctrico">Eléctrico</option>
+                    <option value="Híbrido">Híbrido</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Descripción</label>
+                <textarea id="commercial-desc" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-white focus:ring-2 focus:ring-emerald-500 outline-none resize-none" placeholder="Descripción detallada del vehículo..."></textarea>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Fotos * (Mínimo 3)</label>
+                <div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl p-8 text-center hover:border-emerald-500 transition-colors cursor-pointer bg-gray-50 dark:bg-dark-bg" onclick="document.getElementById('commercial-photos').click()">
+                  <input type="file" id="commercial-photos" multiple accept="image/*" class="hidden" onchange="handleCommercialPhotos(this.files)" />
+                  <i data-lucide="upload-cloud" class="h-12 w-12 text-gray-400 mx-auto mb-3"></i>
+                  <p class="text-gray-600 dark:text-gray-400 font-medium">Subir fotos del vehículo</p>
+                </div>
+                <div id="commercial-photo-preview" class="grid grid-cols-5 gap-2 mt-4"></div>
+              </div>
+
+              <div class="flex gap-4 pt-6 border-t border-gray-200 dark:border-dark-border">
+                <button type="button" onclick="showSection('comercial-dashboard')" class="flex-1 px-6 py-4 border border-gray-300 dark:border-dark-border rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                  Cancelar
+                </button>
+                <button type="submit" class="flex-1 px-6 py-4 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2">
+                  <i data-lucide="check" class="h-5 w-5"></i>
+                  Publicar en catálogo
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VISTA ADMIN ==================== -->
+      
+      <!-- DASHBOARD ADMIN -->
+      <section id="admin-dashboard" class="hidden pt-24 min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+          <div class="mb-8">
+            <h1 class="serif text-4xl md:text-5xl font-bold mb-2 dark:text-white">Panel de Administración</h1>
+            <p class="text-gray-600 dark:text-gray-400">Control total del sistema</p>
+          </div>
+
+          <!-- Stats Overview -->
+          <div class="grid md:grid-cols-4 gap-6 mb-8">
+            <div class="dashboard-card border-l-4 border-purple-500">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-gray-500 dark:text-gray-400 text-sm">Usuarios totales</h3>
+                <i data-lucide="users" class="h-5 w-5 text-purple-500"></i>
+              </div>
+              <p class="text-3xl font-bold dark:text-white" id="admin-users-count">0</p>
+              <p class="text-xs text-gray-400 mt-1">+12% este mes</p>
+            </div>
+            <div class="dashboard-card border-l-4 border-blue-500">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-gray-500 dark:text-gray-400 text-sm">Ventas totales</h3>
+                <i data-lucide="shopping-cart" class="h-5 w-5 text-blue-500"></i>
+              </div>
+              <p class="text-3xl font-bold dark:text-white">€<span id="admin-sales">0</span></p>
+              <p class="text-xs text-gray-400 mt-1">+8% este mes</p>
+            </div>
+            <div class="dashboard-card border-l-4 border-amber-500">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-gray-500 dark:text-gray-400 text-sm">Reparaciones</h3>
+                <i data-lucide="wrench" class="h-5 w-5 text-amber-500"></i>
+              </div>
+              <p class="text-3xl font-bold dark:text-white" id="admin-repairs">0</p>
+              <p class="text-xs text-gray-400 mt-1"><span id="admin-pending-repairs">0</span> pendientes</p>
+            </div>
+            <div class="dashboard-card border-l-4 border-emerald-500">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-gray-500 dark:text-gray-400 text-sm">Vehículos en stock</h3>
+                <i data-lucide="car" class="h-5 w-5 text-emerald-500"></i>
+              </div>
+              <p class="text-3xl font-bold dark:text-white" id="admin-stock">0</p>
+              <p class="text-xs text-gray-400 mt-1">En catálogo</p>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <div class="bg-white dark:bg-dark-surface rounded-2xl shadow-sm mb-8">
+            <div class="flex border-b border-gray-200 dark:border-dark-border overflow-x-auto">
+              <button onclick="showAdminTab('users')" id="tab-users" class="px-6 py-4 font-medium text-purple-600 border-b-2 border-purple-600 whitespace-nowrap">Usuarios</button>
+              <button onclick="showAdminTab('sales')" id="tab-sales" class="px-6 py-4 font-medium text-gray-500 hover:text-gray-700 whitespace-nowrap">Ventas</button>
+              <button onclick="showAdminTab('repairs')" id="tab-repairs" class="px-6 py-4 font-medium text-gray-500 hover:text-gray-700 whitespace-nowrap">Reparaciones</button>
+              <button onclick="showAdminTab('listings')" id="tab-listings" class="px-6 py-4 font-medium text-gray-500 hover:text-gray-700 whitespace-nowrap">Vehículos</button>
+            </div>
+
+            <!-- Contenido tabs -->
+            <div class="p-6">
+              <div id="admin-content-users" class="admin-tab-content">
+                <div class="flex justify-between items-center mb-4">
+                  <h3 class="text-lg font-semibold dark:text-white">Gestión de Usuarios</h3>
+                  <button onclick="showToast('Función de crear usuario')" class="px-4 py-2 bg-purple-600 text-white rounded-lg text-sm hover:bg-purple-700 transition-colors">
+                    <i data-lucide="user-plus" class="h-4 w-4 inline mr-2"></i>Nuevo usuario
+                  </button>
+                </div>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left">
+                    <thead class="bg-gray-50 dark:bg-dark-bg">
+                      <tr>
+                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Nombre</th>
+                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Email</th>
+                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Rol</th>
+                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Estado</th>
+                        <th class="px-4 py-3 text-sm font-medium text-gray-500 dark:text-gray-400">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody id="admin-users-table" class="divide-y divide-gray-200 dark:divide-dark-border">
+                      <!-- Se llena dinámicamente -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div id="admin-content-sales" class="admin-tab-content hidden">
+                <h3 class="text-lg font-semibold mb-4 dark:text-white">Historial de Ventas</h3>
+                <div id="admin-sales-list" class="space-y-3">
+                  <!-- Se llena dinámicamente -->
+                </div>
+              </div>
+
+              <div id="admin-content-repairs" class="admin-tab-content hidden">
+                <h3 class="text-lg font-semibold mb-4 dark:text-white">Todas las Reparaciones</h3>
+                <div id="admin-repairs-list" class="space-y-3">
+                  <!-- Se llena dinámicamente -->
+                </div>
+              </div>
+
+              <div id="admin-content-listings" class="admin-tab-content hidden">
+                <h3 class="text-lg font-semibold mb-4 dark:text-white">Todos los Vehículos</h3>
+                <div id="admin-listings-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <!-- Se llena dinámicamente -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAVORITES -->
+      <section id="favoritos" class="hidden pt-24 min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+          <h1 class="serif text-4xl md:text-5xl font-bold mb-4 dark:text-white">Tus Favoritos</h1>
+          <div id="favorites-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+          <div id="no-favorites" class="text-center py-24">
+            <i data-lucide="heart" class="h-16 w-16 text-gray-300 mx-auto mb-4"></i>
+            <p class="text-gray-500 dark:text-gray-400 text-lg mb-4">No tienes favoritos guardados</p>
+            <button onclick="showSection('catalogo')" class="px-6 py-3 bg-black dark:bg-white text-white dark:text-black rounded-lg font-medium hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors">
+              Explorar catálogo
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-12 mb-12">
+          <div class="col-span-2">
+            <div class="flex items-center mb-4">
+              <i data-lucide="car" class="h-8 w-8 mr-2"></i>
+              <span class="serif text-2xl font-bold">AUTOELITE</span>
+            </div>
+            <p class="text-gray-400 max-w-sm">
+              La plataforma premium para comprar, vender y alquilar vehículos de lujo.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Servicios</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><button onclick="showSection('catalogo')" class="hover:text-white transition-colors">Comprar</button></li>
+              <li><button onclick="showSection('alquiler')" class="hover:text-white transition-colors">Alquilar</button></li>
+              <li><button onclick="showSection('reparaciones')" class="hover:text-white transition-colors">Taller</button></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Mi Cuenta</h4>
+            <ul class="space-y-2 text-gray-400" id="footer-account-links">
+              <!-- Dinámico según rol -->
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-gray-500 text-sm">© 2026 AUTOELITE. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-black dark:bg-white text-white dark:text-black px-6 py-4 rounded-lg shadow-2xl transform translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center gap-3">
+      <i data-lucide="check-circle" class="h-5 w-5 text-green-400 dark:text-green-600"></i>
+      <span id="toast-message" class="font-medium">Operación exitosa</span>
+    </div>
+
+    <!-- Car Detail Modal -->
+<div id="car-detail-modal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+  <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeCarDetail()"></div>
+  <div class="relative min-h-screen md:min-h-0 md:my-8 md:mx-auto md:max-w-6xl bg-white dark:bg-dark-surface md:rounded-2xl shadow-2xl overflow-hidden">
+    
+    <!-- Close Button -->
+    <button onclick="closeCarDetail()" class="absolute top-4 right-4 z-20 p-3 bg-white/90 dark:bg-black/90 rounded-full hover:bg-white dark:hover:bg-black transition-all shadow-lg hover:scale-110">
+      <i data-lucide="x" class="h-6 w-6 dark:text-white"></i>
+    </button>
+
+    <div id="car-detail-content" class="flex flex-col md:flex-row h-full">
+      <!-- Content injected via JS -->
+    </div>
+  </div>
+</div>
+
+  </body>
+</html>
